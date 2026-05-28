@@ -186,13 +186,25 @@ function App() {
   const [mapMarkers, setMapMarkers] = useState([]);
   const [zoomLevel, setZoomLevel] = useState(13);
 
-  // Merge hardcoded locations with backend markers
+ // Merge hardcoded locations with backend markers Safely 🛡️
   const allLocations = React.useMemo(() => {
     const locSet = new Set(LOCATIONS);
-    mapMarkers.forEach(m => locSet.add(m.name));
-    return Array.from(locSet).sort((a, b) => a.localeCompare(b));
-  }, [mapMarkers]);
+    
+    mapMarkers.forEach(m => {
+      // Only add to the set if the marker has a valid, non-empty name string
+      if (m && typeof m.name === 'string' && m.name.trim() !== '') {
+        locSet.add(m.name);
+      }
+    });
 
+    return Array.from(locSet).sort((a, b) => {
+      // Fallback guarantees we are comparing valid strings, preventing crashes
+      const strA = a || '';
+      const strB = b || '';
+      return strA.localeCompare(strB);
+    });
+  }, [mapMarkers]);
+  
   // Live Simulation state
   const [simCoords, setSimCoords] = useState([]);
   const [simCoordsMeta, setSimCoordsMeta] = useState([]);
