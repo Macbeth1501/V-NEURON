@@ -1,8 +1,8 @@
 """
 routing_engine.py — V-NEURON core routing logic.
 
-The graphs are loaded once (via @st.cache_resource) and shared across all
-Streamlit sessions, keeping memory usage constant regardless of user count.
+Graphs are loaded once per process and cached in memory via functools.lru_cache,
+keeping memory usage constant regardless of concurrent API requests.
 """
 from __future__ import annotations
 
@@ -11,15 +11,15 @@ import networkx as nx
 import geopandas as gpd
 from shapely.geometry import Point
 from typing import Optional
-import streamlit as st
+from functools import lru_cache
 
 import config
 
 
 # ─────────────────────────────────────────────────────────────────────────────
-# Graph loader — cached at process level, not per-session
+# Graph loader — cached at process level
 # ─────────────────────────────────────────────────────────────────────────────
-@st.cache_resource(show_spinner="Loading routing graph…")
+@lru_cache(maxsize=4)
 def load_graph(path: str):
     """Load a GraphML file once and keep it in shared process memory."""
     return ox.load_graphml(path)

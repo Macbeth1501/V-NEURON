@@ -21,6 +21,17 @@ frontend/node_modules/
 frontend/dist/
 frontend/.eslintcache
 
+# 📦 Root-level artifacts
+package-lock.json
+
 # 🔐 Secrets
 .env
 .env.local
+
+# 🖥️ IDE & OS
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
