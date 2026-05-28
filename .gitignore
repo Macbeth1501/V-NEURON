@@ -1,0 +1,26 @@
+# 🐍 Python Environments & Cache
+backend/venv/
+venv/
+env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*/__pycache__/*
+
+# 🗺️ Massive Spatial Data Assets & Logs
+backend/data/*.graphml
+backend/data/*.geojson
+backend/data/*.log
+
+# 💾 Backend Caches
+backend/cache/
+
+# ⚛️ Frontend Node Modules & Builds
+frontend/node_modules/
+frontend/dist/
+frontend/.eslintcache
+
+# 🔐 Secrets
+.env
+.env.local
