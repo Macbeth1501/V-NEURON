@@ -5,8 +5,8 @@
 <h1 align="center">🚦 V-NEURON</h1>
 
 <p align="center">
-  <strong>Unified Omnimodal Urban Navigation & Routing System for Nagpur</strong>
-  [Check out the website here] (https://suraj.shinelikesun.workers.dev/vneuron)
+  <strong>Unified Omnimodal Urban Navigation & Routing System for Nagpur</strong> <br>
+  [Check out the website here] : https://suraj.shinelikesun.workers.dev/vneuron
 </p>
 
 <p align="center">
